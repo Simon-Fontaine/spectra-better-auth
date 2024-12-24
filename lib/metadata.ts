@@ -1,3 +1,4 @@
+import { siteConfig } from "@/configs/site";
 import type { Metadata } from "next/types";
 
 export function createMetadata(override: Metadata): Metadata {
@@ -6,17 +7,17 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: "https://owspectra.com",
-      images: "https://owspectra.com/images/og.png",
-      siteName: "Better Auth",
+      url: siteConfig.url,
+      images: siteConfig.og_imgage,
+      siteName: siteConfig.name,
       ...override.openGraph,
     },
     twitter: {
       card: "summary_large_image",
-      creator: "@beakcru",
+      creator: "@SpectraOW2",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: "https://owspectra.com/images/og.png",
+      images: siteConfig.og_imgage,
       ...override.twitter,
     },
   };

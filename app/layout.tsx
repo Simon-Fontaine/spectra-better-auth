@@ -4,6 +4,7 @@ import { createMetadata } from "@/lib/metadata";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { siteConfig } from "@/configs/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +18,11 @@ const geistMono = Geist_Mono({
 
 export const metadata = createMetadata({
   title: {
-    template: "%s | Spectra",
-    default: "Spectra",
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.name,
   },
-  description:
-    "Spectra is a 4.5K Overwatch 2 e-sport team that competes in diverse tournaments and leagues.",
-  metadataBase: new URL("https://owspectra.com"),
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
 });
 
 export default function RootLayout({
@@ -41,6 +41,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          enableColorScheme
         >
           <div className="relative flex min-h-screen flex-col bg-background">
             {children}

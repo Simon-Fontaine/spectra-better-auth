@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function NotFoundPage() {
@@ -29,12 +30,8 @@ export default function NotFoundPage() {
           >
             Go back
           </Button>
-          <Button
-            onClick={() => router.push("/")}
-            variant="outline"
-            className="w-full sm:min-w-sm"
-          >
-            Back to Home
+          <Button asChild variant="outline" className="w-full sm:min-w-sm">
+            <Link href="/">Back to Home</Link>
           </Button>
         </div>
       </div>

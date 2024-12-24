@@ -6,6 +6,8 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { admin, username } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
 import prisma from "./database";
+import { siteConfig } from "@/configs/site";
+import { emailConfig } from "@/configs/email";
 
 const redis = createClient({
   url: process.env.REDIS_URL,
@@ -13,7 +15,7 @@ const redis = createClient({
 await redis.connect();
 
 export const auth = betterAuth({
-  appName: "Spectra",
+  appName: siteConfig.name,
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
@@ -66,7 +68,7 @@ export const auth = betterAuth({
     sendOnSignUp: true,
     sendVerificationEmail: async ({ user, url }) => {
       const result = await resend.emails.send({
-        from: "Spectra <noreply@owspectra.com>",
+        from: `${emailConfig.noReply.identity} <${emailConfig.noReply.email}>`,
         to: user.email,
         subject: "Verify your email address",
         text: `Click the link to verify your email: ${url}`,
@@ -81,7 +83,7 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendResetPassword: async ({ user, url }) => {
       const result = await resend.emails.send({
-        from: "Spectra <noreply@owspectra.com>",
+        from: `${emailConfig.noReply.identity} <${emailConfig.noReply.email}>`,
         to: user.email,
         subject: "Reset your password",
         text: `Click the link to reset your password: ${url}`,
@@ -95,7 +97,7 @@ export const auth = betterAuth({
       enabled: true,
       sendDeleteAccountVerification: async ({ user, url }) => {
         const result = await resend.emails.send({
-          from: "Spectra <noreply@owspectra.com>",
+          from: `${emailConfig.noReply.identity} <${emailConfig.noReply.email}>`,
           to: user.email,
           subject: "Delete your account",
           text: `Click the link to delete your account: ${url}`,
