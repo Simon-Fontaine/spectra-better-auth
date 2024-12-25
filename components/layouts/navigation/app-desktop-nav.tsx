@@ -35,9 +35,11 @@ export function AppDesktopNav() {
               aria-label={item.title}
             >
               <div className="flex items-center gap-1">
-                {item.icon ? <item.icon size={4} aria-hidden="true" /> : null}
+                {item.icon ? (
+                  <item.icon className="size-4" aria-hidden="true" />
+                ) : null}
                 <span>{item.title}</span>
-                {item.external ? <ExternalLink size={4} /> : null}
+                {item.external ? <ExternalLink className="size-4" /> : null}
               </div>
             </Link>
           ) : null

@@ -119,7 +119,7 @@ export default async function UserMenu({
 
         <DropdownMenuGroup>
           <MenuItem
-            icon={<BadgeCheck size={4} />}
+            icon={<BadgeCheck className="size-4" />}
             className="hover:bg-accent/80"
           >
             <Link href="/dashboard/profile/settings" className="w-full">
@@ -127,7 +127,7 @@ export default async function UserMenu({
             </Link>
           </MenuItem>
           <MenuItem
-            icon={<LayoutDashboard size={4} />}
+            icon={<LayoutDashboard className="size-4" />}
             className="hover:bg-accent/80"
           >
             <Link href="/dashboard" className="w-full">
@@ -135,13 +135,19 @@ export default async function UserMenu({
             </Link>
           </MenuItem>
           {session.user.role === "admin" && (
-            <MenuItem icon={<Shield size={4} />} className="hover:bg-accent/80">
+            <MenuItem
+              icon={<Shield className="size-4" />}
+              className="hover:bg-accent/80"
+            >
               <Link href="/dashboard/admin" className="w-full">
                 Admin Panel
               </Link>
             </MenuItem>
           )}
-          <MenuItem icon={<Bell size={4} />} className="hover:bg-accent/80">
+          <MenuItem
+            icon={<Bell className="size-4" />}
+            className="hover:bg-accent/80"
+          >
             <Link href="/dashboard/profile/notifications" className="w-full">
               Notifications
             </Link>

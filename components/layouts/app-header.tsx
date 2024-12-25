@@ -25,7 +25,7 @@ export function AppHeader() {
                 >
                   <Link href={social.url} target="_blank" rel="noreferrer">
                     {social.icon ? (
-                      <social.icon className="h-4 w-4" />
+                      <social.icon className="size-4" />
                     ) : (
                       social.name
                     )}

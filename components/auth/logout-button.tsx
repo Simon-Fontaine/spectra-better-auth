@@ -38,9 +38,9 @@ export default function LogoutButton({
       disabled={loading}
     >
       {loading ? (
-        <Loader2 size={4} className="animate-spin" />
+        <Loader2 className="animate-spin size-4" />
       ) : (
-        <LogOut size={4} />
+        <LogOut className="size-4" />
       )}
       {loading ? "Signing Out..." : "Sign Out"}
     </Button>
